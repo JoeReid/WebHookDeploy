@@ -1,6 +1,21 @@
-env:
-	virtualenv --no-site-packages -p python3 env
-	env/bin/pip install pyramid pyramid_mako
+run: install
+	echo "run"
 
-run: env
-	env/bin/python app.py
+install: prep
+	if dpkg -s nodejs ; then \
+		echo "nodejs already installed"; \
+	else \
+		echo "installing nodejs"; \
+		sudo apt-get install -y nodejs ; \
+	fi
+
+curl_installed:
+	if dpkg -s curl ; then \
+		echo "curl already installed"; \
+	else \
+		echo "installing curl"; \
+		sudo apt-get install -y curl ; \
+	fi
+
+prep: curl_installed
+	sudo ./prep.sh
