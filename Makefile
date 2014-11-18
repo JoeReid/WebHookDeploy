@@ -8,6 +8,7 @@ install: prep
 		echo "installing nodejs"; \
 		sudo apt-get install -y nodejs ; \
 	fi
+	npm install gith
 
 curl_installed:
 	if dpkg -s curl ; then \
