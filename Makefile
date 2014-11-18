@@ -1,5 +1,5 @@
 run: install
-	echo "run"
+	forever start app.js
 
 install: prep
 	if dpkg -s nodejs ; then \
@@ -9,6 +9,7 @@ install: prep
 		sudo apt-get install -y nodejs ; \
 	fi
 	npm install gith
+	sudo npm install -g forever
 
 curl_installed:
 	if dpkg -s curl ; then \
